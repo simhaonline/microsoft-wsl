@@ -33,7 +33,7 @@ if [ -z "$SYSTEMD_PID" ] || [ "$SYSTEMD_PID" != "1" ]; then
         grep -v "^_=" | \
         cat - > "$HOME/.systemd-env"
     echo "PATH='$PATH'" >> "$HOME/.systemd-env"
-    exec sudo /usr/sbin/enter-systemd "$BASH_EXECUTION_STRING"
+    exec sudo /usr/sbin/enter-systemd-namespace "$BASH_EXECUTION_STRING"
 fi
 if [ -n "$PRE_NAMESPACE_PATH" ]; then
     export PATH="$PRE_NAMESPACE_PATH"
